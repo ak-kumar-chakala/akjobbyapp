@@ -1,0 +1,32 @@
+.company-logo-img {
+  height: 80px;
+  width: 80px;
+  margin-right: 10px;
+}
+
+.head1 {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 0px;
+}
+
+.head2 {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.similar-job-cont {
+  height: 600px;
+  width: 300px;
+  border-radius: 10px;
+  background-color: #202020;
+  margin: 30px;
+  padding: 18px;
+  color: white;
+}
+
+.logo-title-cont {
+  display: flex;
+}

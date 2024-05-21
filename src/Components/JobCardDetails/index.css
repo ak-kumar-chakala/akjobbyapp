@@ -1,0 +1,132 @@
+.job-card-details-cont {
+  background-color: black;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selected-job-cont {
+  background-color: #202020;
+  height: 100%;
+  width: 90%;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 25px;
+}
+
+.companyLogo {
+  height: 120px;
+  width: 120px;
+}
+
+.skills-cont {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.company-details {
+  display: flex;
+}
+
+.title-cont {
+  display: flex;
+  flex-direction: column;
+}
+
+.star-cont {
+  display: flex;
+  margin-left: 10px;
+  align-items: center;
+}
+
+.title {
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  margin-left: 15px;
+}
+
+.rating {
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.location-package-cont {
+  display: flex;
+  color: white;
+}
+
+.location-cont {
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+  margin-right: 50px;
+}
+
+.employment-type-cont {
+  display: flex;
+  font-weight: bold;
+  align-items: center;
+}
+
+.location-employment-cont {
+  display: flex;
+}
+
+.location-package-cont {
+  display: flex;
+  justify-content: space-between;
+}
+
+.location {
+  margin-right: 20px;
+}
+
+.io-bag {
+  margin-right: 20px;
+}
+
+.title-description {
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+}
+
+.description-para {
+  color: white;
+  font-size: 20px;
+}
+
+.description-image-cont {
+  display: flex;
+}
+
+.similar-jobs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  width: 90%;
+}
+
+.title-similar-jobs {
+  display: flex;
+  align-self: flex-start;
+  color: white;
+  margin-left: 50px;
+}
+
+.link-symbol {
+  margin-left: 10px;
+}
+
+.anchor-element {
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.description-anchor-cont {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,9 @@
+.skill {
+  color: white;
+  margin: 40px;
+  display: flex;
+}
+
+.skill-name {
+  margin: 20px;
+}
