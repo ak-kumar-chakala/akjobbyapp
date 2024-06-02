@@ -10,16 +10,18 @@ const SalaryRange = props => {
   }
 
   return (
-    <div className="radio-element">
-      <input
-        id={salaryRangeId}
-        type="radio"
-        name="salary"
-        value={salaryRangeId}
-        onClick={onClickSalaryButton}
-      />
-      <label htmlFor="1">{label}</label>
-    </div>
+    <li className="radio-element">
+      <label>
+        <input
+          id={salaryRangeId}
+          type="radio"
+          name="salary"
+          value={salaryRangeId}
+          onClick={onClickSalaryButton}
+        />
+        {label}
+      </label>
+    </li>
   )
 }
 

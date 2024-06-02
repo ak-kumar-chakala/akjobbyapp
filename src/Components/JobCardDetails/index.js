@@ -64,6 +64,8 @@ class JobCardDetails extends Component {
       imageUrl: selectedJobData.lifeAtCompany.image_url,
     }
 
+    console.log(data.similar_jobs)
+
     const similarJobsData = data.similar_jobs.map(eachItem => ({
       companyLogoUrl: eachItem.company_logo_url,
       employmentType: eachItem.employment_type,
@@ -92,11 +94,11 @@ class JobCardDetails extends Component {
     const {skills} = this.state
 
     return (
-      <div className="skills-cont">
+      <ul className="skills-cont">
         {skills.map(eachItem => (
           <Skills eachSkill={eachItem} id={eachItem.name} key={eachItem.name} />
         ))}
-      </div>
+      </ul>
     )
   }
 
@@ -123,7 +125,11 @@ class JobCardDetails extends Component {
     return (
       <div className="selected-job-cont">
         <div className="company-details">
-          <img className="companyLogo" alt="companyLogo" src={companyLogoUrl} />
+          <img
+            className="companyLogo"
+            alt="job details company logo"
+            src={companyLogoUrl}
+          />
           <div className="title-cont">
             <p className="title">{title}</p>
             <div className="star-cont">
@@ -155,11 +161,13 @@ class JobCardDetails extends Component {
         </div>
         <p className="description-para">{jobDescription}</p>
         <h1 className="title-description">Skills</h1>
+
         {this.renderSkills()}
+
         <h1 className="title">Life at Company</h1>
         <div className="description-image-cont">
           <p className="description-para">{description}</p>
-          <img src={imageUrl} alt="skillImage" />
+          <img src={imageUrl} alt="life at company" />
         </div>
       </div>
     )
@@ -173,11 +181,12 @@ class JobCardDetails extends Component {
         {isLoading && this.renderLoadingView()}
         {this.renderSelectedProduct()}
         <h1 className="title-similar-jobs">Similar Jobs</h1>
-        <div className="similar-jobs">
+
+        <ul className="similar-jobs">
           {similarJobs.map(eachItem => (
             <SimilarJobCard eachJob={eachItem} key={eachItem.id} />
           ))}
-        </div>
+        </ul>
       </div>
     )
   }

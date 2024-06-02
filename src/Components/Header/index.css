@@ -30,3 +30,7 @@
 .home-jobs-button-container {
   display: flex;
 }
+
+.btn-li {
+  list-style-type: none;
+}

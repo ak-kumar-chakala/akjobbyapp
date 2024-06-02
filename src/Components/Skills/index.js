@@ -9,10 +9,10 @@ const Skills = props => {
   }
 
   return (
-    <div className="skill">
+    <li className="skill">
       <img alt="skillImage" src={skillData.imageUrl} />
       <p className="skill-name">{skillData.name}</p>
-    </div>
+    </li>
   )
 }
 

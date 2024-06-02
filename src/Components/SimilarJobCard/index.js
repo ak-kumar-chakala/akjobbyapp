@@ -16,18 +16,18 @@ const SimilarJobCard = props => {
   } = eachJob
 
   return (
-    <div className="similar-job-cont">
+    <li className="similar-job-cont">
       <div className="logo-title-cont">
         <img
           className="company-logo-img"
           src={companyLogoUrl}
-          alt="companyLogoUrl"
+          alt="similar job company logo"
         />
         <div className="title-rating-cont">
           <h1 className="head1">{title}</h1>
           <div className="rating-cont">
             <FaStar className="star" />
-            <h1 className="head2">{rating}</h1>
+            <p className="head2">{rating}</p>
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@ const SimilarJobCard = props => {
       <p>{location}</p>
       <IoBag />
       <p>{employmentType}</p>
-    </div>
+    </li>
   )
 }
 

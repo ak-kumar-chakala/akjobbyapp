@@ -2,6 +2,7 @@
   color: white;
   margin: 40px;
   display: flex;
+  list-style-type: none;
 }
 
 .skill-name {

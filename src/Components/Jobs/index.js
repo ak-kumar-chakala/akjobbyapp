@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {FaSearch} from 'react-icons/fa'
+
+import {BsSearch} from 'react-icons/bs'
 import './index.css'
 import Loader from 'react-loader-spinner'
 
@@ -70,10 +71,6 @@ class Jobs extends Component {
   getJobCardDetails = async () => {
     const jwtToken = Cookies.get('jwt_token')
 
-    this.setState({
-      loadingStatus: false,
-    })
-
     const {
       isFullTimeClicked,
       isPartTimeClicked,
@@ -94,6 +91,8 @@ class Jobs extends Component {
       eachFilter => eachFilter !== '',
     )
 
+    console.log(updatedArray)
+
     const joinedArray = updatedArray.join(',')
 
     const apiUrl = `https://apis.ccbp.in/jobs?employment_type=${joinedArray}&minimum_package=${selectedSalary}&search=${searchInput}`
@@ -104,6 +103,9 @@ class Jobs extends Component {
       },
       method: 'GET',
     }
+    this.setState({
+      loadingStatus: false,
+    })
     const response = await fetch(apiUrl, options)
 
     if (response.ok === true) {
@@ -182,17 +184,26 @@ class Jobs extends Component {
       )
     }
 
-    return <button type="button">Retry</button>
+    if (profileStatus === 'FAILURE') {
+      return (
+        <div>
+          <button type="button">Retry</button>
+        </div>
+      )
+    }
+
+    return null
   }
 
   onChangeSearchInput = event => {
-    console.log(event.target.value)
-    this.setState(
-      {
-        searchInput: event.target.value,
-      },
-      this.getJobCardDetails,
-    )
+    this.setState({
+      searchInput: event.target.value,
+    })
+  }
+
+  onSubmitForm = event => {
+    event.preventDefault()
+    this.getJobCardDetails()
   }
 
   renderJobCardData = () => {
@@ -300,30 +311,34 @@ class Jobs extends Component {
           <div className="profile-filters-container">
             {this.renderProfileView()}
             <hr />
-            <li className="filters-container">
+            <div className="filters-container">
               <h1 className="type-employ-head">Type of Employment</h1>
-              {employmentTypesList.map(eachItem => (
-                <EmploymentTypes
-                  eachType={eachItem}
-                  key={eachItem.employmentTypeId}
-                  onChangeEmploymentType={this.onChangeEmploymentType}
-                />
-              ))}
-            </li>
-            <li className="radio-elements">
+              <ul>
+                {employmentTypesList.map(eachItem => (
+                  <EmploymentTypes
+                    eachType={eachItem}
+                    key={eachItem.employmentTypeId}
+                    onChangeEmploymentType={this.onChangeEmploymentType}
+                  />
+                ))}
+              </ul>
+            </div>
+            <div className="radio-elements">
               <h1 className="type-employ-head">Salary Range</h1>
-              {salaryRangesList.map(eachItem => (
-                <SalaryRange
-                  eachRange={eachItem}
-                  key={eachItem.salaryRangeId}
-                  onChangeSalaryRange={this.onChangeSalaryRange}
-                />
-              ))}
-            </li>
+              <ul>
+                {salaryRangesList.map(eachItem => (
+                  <SalaryRange
+                    eachRange={eachItem}
+                    key={eachItem.salaryRangeId}
+                    onChangeSalaryRange={this.onChangeSalaryRange}
+                  />
+                ))}
+              </ul>
+            </div>
           </div>
 
           <div className="job-description-container">
-            <div className="search-input-div">
+            <form onSubmit={this.onSubmitForm} className="search-input-div">
               <input
                 placeholder="Search"
                 className="search-input"
@@ -331,12 +346,19 @@ class Jobs extends Component {
                 onChange={this.onChangeSearchInput}
               />
 
-              <FaSearch className="search-icon" />
-            </div>
+              <button
+                className="search-button"
+                data-testid="searchButton"
+                type="submit"
+                aria-label="Search"
+              >
+                <BsSearch className="search-icon" />
+              </button>
+            </form>
 
             <div className="job-cards-container">
               {loadingStatus && this.renderLoadingView()}
-              {this.renderJobCardData()}
+              <ul>{this.renderJobCardData()}</ul>
             </div>
           </div>
         </div>
